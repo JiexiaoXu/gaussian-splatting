@@ -28,6 +28,8 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
     makedirs(render_path, exist_ok=True)
     makedirs(gts_path, exist_ok=True)
 
+    print("camera views len: " + str(len(views)))
+
     if view_index is not None:
         print(f"Rendering view {view_index}")
         view = views[view_index]
@@ -65,7 +67,7 @@ if __name__ == "__main__":
     parser.add_argument("--skip_train", action="store_true")
     parser.add_argument("--skip_test", action="store_true")
     parser.add_argument("--quiet", action="store_true")
-    parser.add_argument("--view)index", default=None, type=int, help="Index of the view to render")
+    parser.add_argument("--view_index", default=None, type=int, help="Index of the view to render")
     args = get_combined_args(parser)
     print("Rendering " + args.model_path)
 
